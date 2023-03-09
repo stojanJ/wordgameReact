@@ -3,12 +3,7 @@ import { wordService, getScore } from "./services/WordService";
 
 function App() {
   const [newWord, setNewWord] = useState({ word:"" });
-  const [score, setScore] = useState(0);
   const [response, setResponse] = useState("");
-
-  useEffect(() => {
-    handleGetHighScores();
-  }, []);
 
   const handleSubmit= async (newWord) => {
     try{
@@ -16,12 +11,6 @@ function App() {
       setResponse(response);
     } catch { console.error("handleSubmition went wrong") }
   };
-
-
-  async function handleGetHighScores() {
-    const response = await wordService.getScore();
-    setScore(response);
-  }
 
   return (
   <>
@@ -38,11 +27,10 @@ function App() {
         /></label>
         <button type="submit">Play</button>
       </form>
-      <p>{response ? <h5>{response}</h5> : ""}</p>
     </div>
     <div>
      <h1>Score</h1>
-       {score ? <h5>{score}</h5> : ""}
+      <p>{response ? <h5>{response}</h5> : ""}</p>
     </div>
   </>
   );

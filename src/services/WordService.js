@@ -17,14 +17,6 @@ if (newWord.checkWordService.checkWord === "No Definitions Found"){
     };
 }
 }
-async getScore() {
-  try {
-    const response = await httpService.axiosInstance.get("/word");
-    return response.data;
-  } catch {
-    console.error("GET score error");
-  }
-}
 
 }
 
